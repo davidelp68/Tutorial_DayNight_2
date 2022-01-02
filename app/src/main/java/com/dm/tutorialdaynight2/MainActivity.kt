@@ -19,6 +19,19 @@ class MainActivity : AppCompatActivity() {
         rbNight = findViewById(R.id.rB_night)
         rbDefault = findViewById(R.id.rB_default)
 
+        //questo serve per selezionare il radioButton in base all'impostazione dell'aspetto
+        //all'avvio dell'app
+        when (AppCompatDelegate.getDefaultNightMode()) {
+            AppCompatDelegate.MODE_NIGHT_NO -> {
+                rbDay!!.isChecked = true
+            }
+            AppCompatDelegate.MODE_NIGHT_YES -> {
+                rbNight!!.isChecked = true
+            }
+            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM -> {
+                rbDefault!!.isChecked = true
+            }
+        }
 
         rbDay!!.setOnClickListener {
             //Imposta il tema chiaro
